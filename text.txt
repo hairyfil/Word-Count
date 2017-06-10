@@ -1,0 +1,6 @@
+This is a text file with text in it.
+It is used to test a program that counts the number of words
+then if you have time you can count the number of words and create
+an index which tabulates each word and how many times it is used.
+As an extension to that you can then create a dictionary of lists that has 
+the format of {'Word': (list of where the word is found)}
