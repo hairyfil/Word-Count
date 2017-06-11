@@ -5,12 +5,26 @@
 
 import operator
 import re
+import sys
+import os
 
-file=open("text.txt","r+")
+print "--------------------------------------"
+print
+
+#print('sys.argv[0] =', sys.argv[0])
+PATHNAME = os.path.dirname(sys.argv[0])
+#print('path =', pathname)
+#print('full path =', os.path.abspath(pathname))
+
+os.chdir(os.path.abspath(PATHNAME))
+CWD = os.getcwd()
+print "Current Working Directory is - " + CWD
+
+MYINPUTFILE = open("text.txt", "r")
 
 # dictionary is an unordered key/value pair list
 # define the wordcount dictionary to store words in
-wordcount={}
+WORDCOUNT = {}
 
 # populate the dictionary with ALL words from the file
 #for word in file.read().split():
@@ -22,12 +36,12 @@ wordcount={}
 # populate the dictionary with ALL words from the file
 # all non [a-zA-Z] characters stripped out and changed to lowercase
 
-for word in file.read().split():
+for word in MYINPUTFILE.read().split():
     trackedword = re.sub("[^a-zA-Z]+", "", word.lower())
-    if trackedword not in wordcount:
-        wordcount[trackedword] = 1
+    if trackedword not in WORDCOUNT:
+        WORDCOUNT[trackedword] = 1
     else:
-        wordcount[trackedword] += 1
+        WORDCOUNT[trackedword] += 1
 
 # simple print loops
 # Print the dictionary- style #1
@@ -51,7 +65,7 @@ print "----\t\t-----"
 # for key, value in sorted(wordcount.items(), key=operator.itemgetter(0)):
 # the key=operator.itemgetter(0) isn't required and is assumed to be the default if omitted
 
-for key, value in sorted(wordcount.items()):
+for key, value in sorted(WORDCOUNT.items()):
     if len(key) > 8:
         print "{}\t{}".format(key, value)
     else:
@@ -66,7 +80,7 @@ print
 print "Word\t\tCount"
 print "----\t\t-----"
 
-for key, value in sorted(wordcount.items(), key=operator.itemgetter(1)):
+for key, value in sorted(WORDCOUNT.items(), key=operator.itemgetter(1)):
     if len(key) > 8:
         print "{}\t{}".format(key, value)
     else:
@@ -79,10 +93,10 @@ print
 print "Word\t\tCount"
 print "----\t\t-----"
 
-for key, value in sorted(wordcount.items(), key=operator.itemgetter(1), reverse=True):
+for key, value in sorted(WORDCOUNT.items(), key=operator.itemgetter(1), reverse=True):
     if len(key) > 8:
         print "{}\t{}".format(key, value)
     else:
         print "{}\t\t{}".format(key, value)
 
-file.close();
+MYINPUTFILE.close()
