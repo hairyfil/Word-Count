@@ -1,4 +1,5 @@
-#
+# 
+# Testing SCM with GitHUb
 # Open a file and count how many occurences of each word
 # print the results in a variety of forms
 #
