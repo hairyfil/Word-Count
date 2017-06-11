@@ -1,5 +1,6 @@
 # 
 # Testing SCM with GitHUb
+# So you commit changes THEN push
 # Open a file and count how many occurences of each word
 # print the results in a variety of forms
 #
